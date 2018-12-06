@@ -40,12 +40,13 @@ int main(int argc, char *argv[]) {
 	
 	//1.3 read each movie data from the file and add it to the linked list 이부분에서 파일을 하나씩 읽어온다. 영화정보에대해 ㄱ조체를 만든다. 
 	while ((while_check = fgetc(fp)) != EOF)
-	{	fscanf(fp,"%s %f %i %s",name, country, &runtime, &score);
+	{	fscanf(fp,"%s %s %i %f",name, country, &runtime, &score);
 		mvInfo = mv_genMvInfo(name, score, runtime, country);
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list); //끝에다가 덧붙인다. 
-		list_isEndNode(list);
-		printMv(list);
+
+		
+	
 		
 	}
 	
