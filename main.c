@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
 	printf("Reading the data files.... ");
-	fp= fopen("moive.dat","r");
+	fp= fopen("movie.dat","r");
 	if(NULL!= fp)
 	{
 		printf("\n Read done! items are read");
@@ -36,6 +36,7 @@ int main(int argc, char *argv[]) {
 	}
 	//1.2 list generation (use function list_genList() )
 	list = list_genList(); //리스트를 만든다 
+	
 	
 	//1.3 read each movie data from the file and add it to the linked list 이부분에서 파일을 하나씩 읽어온다. 영화정보에대해 ㄱ조체를 만든다. 
 	while ( 1/* read name, country, runtime and score */)

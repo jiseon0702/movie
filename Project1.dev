@@ -101,7 +101,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=..\movie.dat
+FileName=movie.dat
 Folder=
 Compile=0
 Link=0
