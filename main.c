@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
 	FILE *fp; //FILE pointer for reading movie data 
 	char name[200]; //movie name
 	char country[10]; //movie country
-	int runTime; //movie runtime
+	int runtime; //movie runtime
 	float score; //movie score
 	
 	int exit_flag = 0; //flag variable for while loop
@@ -20,14 +20,14 @@ int main(int argc, char *argv[]) {
 	int (*repFunc)(void* obj, void* arg); //function pointer for using list_repeatFunc() function
 	void *arg; //a void pointer for passing argument to repFunc
 	int cnt; //integer variable
-	
+	char while_check; //while문 돌때 fgetc 받아 파일의 끝인지 아닌지 확인하는 변수 
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
 	printf("Reading the data files.... ");
 	fp= fopen("movie.dat","r");
 	if(NULL!= fp)
 	{
-		printf("\n Read done! items are read");
+		printf("\n Read done! items are read \n");
 	}
 	else
 	{
@@ -39,18 +39,34 @@ int main(int argc, char *argv[]) {
 	
 	
 	//1.3 read each movie data from the file and add it to the linked list 이부분에서 파일을 하나씩 읽어온다. 영화정보에대해 ㄱ조체를 만든다. 
-	while ( 1/* read name, country, runtime and score */)
-	{	
+	while ((while_check = fgetc(fp)) != EOF)
+	{	fscanf(fp,"%s %f %i %s",name, country, &runtime, &score);
+		mvInfo = mv_genMvInfo(name, score, runtime, country);
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list); //끝에다가 덧붙인다. 
+		list_isEndNode(list);
+		printMv(list);
+		
 	}
+	
 
 	//1.4 FILE close
+	fclose(fp);
+	
 	
 	//2. program start
 	while(exit_flag == 0)
 	{
 		//2.1 print menu message and get input option
+		printf("\n ----------------Menu---------------------");
+		printf("\n 1.print all the movies");
+		printf("\n 2. search for specific country movies");
+		printf("\n 3. search for specific runtime movies");
+		printf("\n 4. search for specific score movies");
+		printf("\n exit");
+		printf("\n ----------------Menu---------------------");
+		printf("\n --- select an option : ");
+		scanf("%i",&option);
 		
 		switch(option)
 		{
