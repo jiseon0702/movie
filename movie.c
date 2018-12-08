@@ -19,16 +19,16 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 	
 	if (mvPtr == NULL)
 	{
-		printf(" ERROR \n");
+		printf("\n ERROR ! mvPtr is NULL");
 		return NULL;
 		
 	 } 
 	 
 	//변수값 저장
-	mvPtr->name = name;
+	strcpy(mvPtr->name,name);
 	mvPtr->score = score;
 	mvPtr->runTime = runTime;
-	mvPtr->madeIn = country;
+	strcpy(mvPtr->madeIn,country);
 	//allocate memory and set the member variables
 	
 	return (void*)mvPtr;
@@ -52,26 +52,29 @@ void mv_print(void* obj)
 
 //return the score value from the input instance of movInfo_t structure
 float mv_getScore(void* obj)
-{
-	return(movInfo_t->score);
+{	
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	return (mvPtr->score); 
 }
 
 //return the runtime value from the input instance of movInfo_t structure
 int mv_getRunTime(void* obj)
 {
-	return(movInfo_t->runTime);
-}
-
-//return the name string pointer from the input instance of movInfo_t structure
-char* mv_getName(void* obj)
-{
-	return(movInfo_t->name);
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	return (mvPtr->runTime); 
 }
 
 //return the country string pointer from the input instance of movInfo_t structure
 char* mv_getCountry(void* obj)
-{
-	return(movInfo_t->madeIn);
+{	
+	char country;// 입력받을 나라 이름 
+	
+	movInfo_t* mvPtr = (movInfo_t*)obj;
+	
+	strcpy(country,mvPtr->madeIn);
+	
+	return country;
+	
 }
 
 
