@@ -14,7 +14,21 @@ typedef struct movInfo{
 void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
 	movInfo_t* mvPtr;
+	//동적 메모리 할당 & 변수값 저장
+	mvPtr = (movInfo_t*)malloc( sizeof(movInfo_t) );
 	
+	if (mvPtr == NULL)
+	{
+		printf(" ERROR \n");
+		return NULL;
+		
+	 } 
+	 
+	//변수값 저장
+	mvPtr->name = name;
+	mvPtr->score = score;
+	mvPtr->runTime = runTime;
+	mvPtr->madeIn = country;
 	//allocate memory and set the member variables
 	
 	return (void*)mvPtr;

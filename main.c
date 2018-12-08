@@ -39,8 +39,9 @@ int main(int argc, char *argv[]) {
 	//1.3 read each movie data from the file and add it to the linked list
 	while ((while_check = fgetc(fp)) != EOF)
 	{	fscanf(fp,"%s %s %i %f",name, country, &runtime, &score);
-		mvInfo = mv_genMvInfo(name, score, runtime, country);
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
+		mvInfo = mv_genMvInfo(name, score, runtime, country);
+
 		list_addTail(mvInfo, list); //끝에다가 덧붙인다. 
 	}
 	//1.4 FILE close
