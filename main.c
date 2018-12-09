@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 	void *ndPtr; //void pointer for linked list node
 	char while_check; //while문 돌때 fgetc 받아 파일의 끝인지 아닌지 확인하는 변수 
 	int count; //if문을 돌릴때 해당하는 영화정보가 몇개인지 세는 변수 
-	char select_country; // 입력 받는 나라이름 
+	char select_country[100]; // 입력 받는 나라이름 
 	int select_runtime; //입력 받는 런타임 
 	float select_score; //입력 받는 점수 
 	char check_country; //입력 받은 나라이름과 비교하는 변수 
@@ -93,9 +93,9 @@ int main(int argc, char *argv[]) {
 			case 2: //print movies of specific country
 				//2.3.1 get country name to search for
 				printf("\n select the country : ");
-				scanf("%s",&select_country);
+				scanf("%s",select_country);
+				printf("프린트 되는지 확인  %s",select_country);
 				count=0;
-				
 				ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0/* repeat until the ndPtr points to the end node */)
 				{
@@ -107,6 +107,7 @@ int main(int argc, char *argv[]) {
 					mvInfo = list_getNdObj(ndPtr);
 					//if the input country matches to the country of the movie,
 					check_country = mv_getCountry(mvInfo);
+					
 					if(strncmp(select_country,check_country,strlen(check_country)) == 0) /*무비인포가 우리가 선택한 것과 같은 정보일때 프린트 하고 카운트한다*/
 					//then print the contents of the mvInfo
 					{
