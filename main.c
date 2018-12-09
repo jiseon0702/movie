@@ -56,6 +56,7 @@ int main(int argc, char *argv[]) {
 	while(exit_flag == 0) 
 	{
 		//2.1 print menu message and get input option
+		option=0;
 		printf("\n ----------------Menu---------------------");
 		printf("\n 1.print all the movies");
 		printf("\n 2. search for specific country movies");
@@ -94,7 +95,7 @@ int main(int argc, char *argv[]) {
 				//2.3.1 get country name to search for
 				printf("\n select the country : ");
 				scanf("%s",select_country);
-				printf("프린트 되는지 확인  %s",select_country);
+				//printf("프린트 되는지 확인  %s \n",select_country);
 				count=0;
 				ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0/* repeat until the ndPtr points to the end node */)
@@ -106,9 +107,9 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					mvInfo = list_getNdObj(ndPtr);
 					//if the input country matches to the country of the movie,
-					check_country = mv_getCountry(mvInfo);
+					//printf("%s",mv_getCountry(mvInfo));
 					
-					if(strncmp(select_country,check_country,strlen(check_country)) == 0) /*무비인포가 우리가 선택한 것과 같은 정보일때 프린트 하고 카운트한다*/
+					if(strncmp(select_country,mv_getCountry(mvInfo),strlen(select_country)) == 0) /*무비인포가 우리가 선택한 것과 같은 정보일때 프린트 하고 카운트한다*/
 					//then print the contents of the mvInfo
 					{
 						printf("------------------------------------\n");
@@ -182,8 +183,10 @@ int main(int argc, char *argv[]) {
 				break;
 				
 			default:
+			{
 				printf("wrong command! input again\n");
 				break;
+			}
 		}
 	}
 	

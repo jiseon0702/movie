@@ -67,13 +67,8 @@ int mv_getRunTime(void* obj)
 //return the country string pointer from the input instance of movInfo_t structure
 char* mv_getCountry(void* obj)
 {	
-	char country[100];// 입력받을 나라 이름 
-	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	
-	strcpy(country,mvPtr->madeIn);
-	
-	return country;
+	return (mvPtr->madeIn);
 	
 }
 
