@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 	char select_country[100]; // 입력 받는 나라이름 
 	int select_runtime; //입력 받는 런타임 
 	float select_score; //입력 받는 점수 
-	char check_country; //입력 받은 나라이름과 비교하는 변수 
+
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
 	printf("Reading the data files.... ");
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 
 		list_addTail(mvInfo, list); //끝에다가 덧붙인다. 
 	}
-	printf(" %i  items are read\n",list_len(list));
+	printf(" %i  items are read\n",list_len(list)); // 총 몇개의 데이터가 읽혔는지 보여준다. 
 	
 	//1.4 FILE close
 	fclose(fp);
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 				printf("\n printing all the movies in the list.....\n\n\n");
 				
 				ndPtr = list;
-				while (list_isEndNode(ndPtr) == 0/* repeat until the ndPtr points to the end node */) //end노드 만날때 까지 실행한다 list_isEndNode 이것의 값이 0이면 1이면 ㄱ 
+				while (list_isEndNode(ndPtr) == 0/* repeat until the ndPtr points to the end node */) //end노드 만날때 까지 실행한다 list_isEndNode 이것의 값이 1이면 end node이다. 
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
 				//2.3.1 get country name to search for
 				printf("\n select the country : ");
 				scanf("%s",select_country);
-				//printf("프린트 되는지 확인  %s \n",select_country);
+
 				count=0;
 				ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0/* repeat until the ndPtr points to the end node */)
@@ -107,9 +107,9 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					mvInfo = list_getNdObj(ndPtr);
 					//if the input country matches to the country of the movie,
-					//printf("%s",mv_getCountry(mvInfo));
+
 					
-					if(strncmp(select_country,mv_getCountry(mvInfo),strlen(select_country)) == 0) /*무비인포가 우리가 선택한 것과 같은 정보일때 프린트 하고 카운트한다*/
+					if(strncmp(select_country,mv_getCountry(mvInfo),strlen(select_country)) == 0) /*무비인포가 우리가 선택한 것과 같은 정보일때 프린트 하고 카운트의 숫자를 하나 늘린다 (해당 하는 무비의 개수를 센다)*/
 					//then print the contents of the mvInfo
 					{
 						printf("------------------------------------\n");

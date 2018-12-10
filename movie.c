@@ -24,7 +24,7 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 		
 	 } 
 	 
-	//변수값 저장
+	//변수값 저장 
 	strcpy(mvPtr->name,name);
 	mvPtr->score = score;
 	mvPtr->runTime = runTime;
@@ -54,21 +54,21 @@ void mv_print(void* obj)
 float mv_getScore(void* obj)
 {	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	return (mvPtr->score); 
+	return (mvPtr->score);  //mvPtr 즉, obj의 score로 반환 
 }
 
 //return the runtime value from the input instance of movInfo_t structure
 int mv_getRunTime(void* obj)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	return (mvPtr->runTime); 
+	return (mvPtr->runTime); //mvPtr 즉, obj의 runtime으로 반환
 }
 
 //return the country string pointer from the input instance of movInfo_t structure
 char* mv_getCountry(void* obj)
 {	
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	return (mvPtr->madeIn);
+	return (mvPtr->madeIn);	 //mvPtr 즉, obj의 made in 으로 반환
 	
 }
 
